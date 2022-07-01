@@ -1,31 +1,45 @@
-install.packages("RWeka")
-install.packages("Rtools")
-subject_name <- c("John Doe", "Jane Doe", "Steve Graves", "Pappu")
-temperature <- c(98.1, 98.6, 101.4, 1)
-flu_status <- c(FALSE, FALSE, TRUE, TRUE)
+#load the data set
+usedcars = read.csv('usedcars.csv', stringsAsFactors = FALSE)
+str(usedcars)
+summary(usedcars$year)
+summary(usedcars[c("price", "mileage")])
+mean(c(36000, 44000, 56000))
+median(c(36000, 44000, 56000))
+range(usedcars$price)
+diff(range(usedcars$price))
+iqr = IQR(usedcars$price)
+iqr
+quantile(usedcars$price)
+quantile(usedcars$price, probs = c(0.01,0.99))
+quantile(usedcars$price, seq(from = 0, to = 1, by = 0.10))   
+boxplot(usedcars$price, main="Boxplot of Used Cars Prices", ylab="Price ($)")
+boxplot(usedcars$mileage, main="Boxplot of Used Cars Mileages", ylab="Odometer (mi.)")
+boxplot(usedcars$price, usedcars$mileage, main ="Boxplot of used cars price and milages togather")
+hist(usedcars$price, main="Histogram of used cars prices", xlab = "Prices ($)")
+hist(usedcars$mileage, main = "Histogram of used cars mileages", xlab = "Odometer (mi.)")
+var(usedcars$price)
+sd(usedcars$price)
+var(usedcars$mileage)
+sd(usedcars$mileage)
+table(usedcars$year)
+table(usedcars$model)
+table(usedcars$color)
+model_table <- table(usedcars$model)
+model_table
+prop.table(model_table)
+color_table <- table(usedcars$color)
+color_pct <- prop.table(color_table)*100
+color_pct
+round(color_pct, digits = 1)
+plot(x = usedcars$mileage, y = usedcars$price, main = "Scatter plot of Price s Mileage",
+     xlab = "Used car Odometer (mi.)", ylab = "Used car Price ($)")
 
-subject_name
-temperature[2]
-temperature[1:3]
-tmp = temperature[-3]
-tmp
-temperature[c(TRUE, FALSE, TRUE)]
-gender <- factor(c("Male", "Male", "Female", "Male"), levels = c("Male", "Female", "Shemale"))
-gender
 
-subject1 <- list(s = subject_name[1], t = temperature[1], f = flu_status[1], g = gender[1])
-subject1[c("s", "t", "f")]
-subject1
-pt_data <- data.frame(subject_name, temperature, flu_status, gender, stringsAsFactors = FALSE)
-pt_data[1]
-pt_data
-pt_data$subject_name
-pt_data[c("temperature", "flu_status", "gender")]
-pt_data
-pt_data[3,4]
 
-a = c(pt_data$subject_name, pt_data$gender, pt_data$temperature)
-a
-pt_data[c(1, 3), c("temperature", "gender")]
-pt_data[-2, c(-1, -3, -5)]
-pt_data[c(1, 3)]
+
+
+
+
+
+
+
